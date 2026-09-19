@@ -32,7 +32,7 @@ a server without RCON access.
 1. Sign into the web panel as an admin with the **Add server**
    permission (owners have this by default).
 
-2. Navigate to **Admin Panel → Server Settings → Add new server**.
+2. Navigate to **Admin Panel → Servers → Add new server**.
 
 3. Fill in:
 
@@ -43,9 +43,10 @@ a server without RCON access.
 
 4. Click **Add server**.
 
-5. After the page reloads, find the new row in the server list and
-   **note the `ID` column**. That number is the `ServerID` you'll
-   write into the SourceMod plugin's config in the next step.
+5. After the page reloads, find the new server's card in the list and
+   **note its `Server ID`**. That number is the `ServerID` you'll
+   write into the SourceMod plugin's config in the next step. Use the
+   copy button next to it to grab the value.
 
 The panel attempts an RCON connection right away to validate the
 details. If it can't reach the server, you'll see a warning, but
@@ -73,6 +74,11 @@ If you skip the `ServerID` step, the plugin will still try to write
 bans to the database but with no server-side identity, so the panel
 can't tell them apart from bans on other servers.
 
+Servers behind NAT or running in containers may report a private
+`hostip`. Set `ServerIP` in the same config to the public IPv4 address
+saved in the panel. Leave it blank on servers whose `hostip` already
+matches the panel.
+
 ## Verifying
 
 Back in the panel's **Servers** page, your new server should show:
@@ -95,7 +101,7 @@ If it doesn't:
 :::tip
 Adding a second or third server later? Repeat the same two halves
 (panel registration + plugin `ServerID` edit) on each new server.
-Each server gets its own row in the panel and its own `ServerID`.
+Each server gets its own card in the panel and its own `ServerID`.
 The `databases.cfg` section stays the same across all servers as
 long as they share the same database.
 :::

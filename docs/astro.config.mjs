@@ -12,6 +12,7 @@
 
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap';
 
 // `astro-mermaid` was scaffolded into the initial migration commit but
 // no docs page actually uses a fenced ```mermaid block yet. The
@@ -54,9 +55,13 @@ export default defineConfig({
       //     URL so a future Open Collective / Patreon addition is a
       //     data-only change. See ./src/components/Footer.astro for
       //     the full rationale.
+      //   - SocialIcons: re-implements the stock icon loop inline. See
+      //     ./src/components/SocialIcons.astro for the build constraint
+      //     that forces the inline copy.
       components: {
         ThemeProvider: './src/components/ThemeProvider.astro',
         Footer: './src/components/Footer.astro',
+        SocialIcons: './src/components/SocialIcons.astro',
       },
       head: [
         {
@@ -124,6 +129,7 @@ export default defineConfig({
             { label: 'Quickstart (Docker)', slug: 'getting-started/quickstart-docker' },
           ],
         },
+        { label: 'RookHelm', slug: 'rookhelm' },
         {
           label: 'Setup',
           items: [
@@ -188,5 +194,6 @@ export default defineConfig({
         },
       ],
     }),
+    sitemap(),
   ],
 });
