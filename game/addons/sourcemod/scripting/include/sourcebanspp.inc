@@ -41,6 +41,7 @@
 // 2.0 epoch (this header):
 //   sourcebanspp.inc — library "sourcebans++" (sbpp_main.smx)
 //     Additive: forward SBPP_OnClientPostAdminCheck (#1431).
+//     Additive: native SBPP_BanPlayerBySteamId (#1511).
 //     Unchanged: SBPP_BanPlayer; SBBanPlayer remains deprecated.
 //     Existing third-party .smx that only use prior natives/forwards
 //     generally keep working without a rebuild.
@@ -138,7 +139,7 @@ native void SBPP_ReportPlayer(int iReporter, int iTarget, const char[] sReason);
  * Called when the admin banning the player.
  *
  * @param iAdmin	The client index of the admin who is banning the client
- * @param iTarget    The client index of the player to ban
+ * @param iTarget	The client index of the player to ban (-1 for an offline SteamID ban)
  * @param iTime      The time to ban the player for (in minutes, 0 = permanent)
  * @param sReason    The reason to ban the player from the server
  *********************************************************/
